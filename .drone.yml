@@ -6,16 +6,16 @@ steps:
    image: starlight2834/ci_docker:latest
    commands:
       - apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev repo rsync flex bison
-      - git config --global user.name "JamieHoSzeYui"
-      - git config --global user.email "henloboii@protonmail.ch"
+      - git config --global user.name "spydermahn1234"
+      - git config --global user.email "nickmahn1984@gmail.com"
       - git config --global color.ui false
       - git clone https://github.com/akhilnarang/scripts && cd scripts && bash setup/android_build_env.sh && cd ..
       - mkdir rec && cd rec
       - repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
       - repo sync -c -j4 --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync
-      - git clone https://github.com/JamieHoSzeYui/omni_device_xiaomi_merlin --depth=1 --single-branch device/xiaomi/merlin
-      - . build/envsetup.sh &&lunch omni_merlin-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka recoveryimage
-      - cd out/target/proudct/merlin
+      - git clone https://github.com/TheCandyShop-MM3/android_device_xiaomi_nitrogen-10 --depth=1 --single-branch device/xiaomi/nitrogen
+      - . build/envsetup.sh &&lunch omni_nitrogen-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka recoveryimage
+      - cd out/target/proudct/nitrogen
       - curl -sL https://git.io/file-transfer | sh
       - ./transfer wet recovery.img
   
